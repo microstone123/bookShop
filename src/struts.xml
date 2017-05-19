@@ -1,0 +1,57 @@
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.i18n.encoding" value="utf8"/>
+	<package name="default" extends="struts-default">
+		<interceptors>
+			<interceptor name="managerLogin" class="interceptor.ManagerLoginCheck"/>
+		</interceptors>
+		<action name="register" class="action.RegisterAction">
+			<result>/login.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="input">/register.jsp</result>
+		</action>
+		<action name="login" class="action.LoginAction">
+			<result type="redirect">userInfo.action</result>
+			<result name="input">/login.jsp</result>
+		</action>
+		<action name="userInfo" class="action.UserInfoAction">
+			<result>/user/userInfo.jsp</result>
+		</action>
+		<action name="edit" class="action.EditAction">
+			<result>/user/userInfo.jsp</result>
+			<result name="login">/login.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="input">/user/userInfo.jsp</result>
+		</action>
+		<action name="exit" class="action.ExitAction">
+			<result type="redirect">/login.jsp</result>
+		</action>
+		<action name="userList" class="action.UserListAction">
+			<interceptor-ref name="managerLogin"/>
+			<interceptor-ref name="defaultStack"/>
+			<result name="login">/managerLogin.jsp</result>		
+			<result>/manager/manager.jsp</result>
+		</action>
+		<action name="page" class="action.PageAction">
+			<interceptor-ref name="managerLogin"/>
+			<interceptor-ref name="defaultStack"/>
+			<result name="login">/managerLogin.jsp</result>
+			<result type="redirect">/userList.action?pageNumber=${pageNumber}&amp;pageSize=${pageSize}&amp;totalPage=${totalPage}</result>
+		</action>
+		<action name="managerLogin" class="action.ManagerLoginAction">
+			<result name="input">/managerLogin.jsp</result>
+			<result type="redirect">/page.action</result>
+		</action>
+		<action name="deleteUser" class="action.DeleteUserAction">
+			<interceptor-ref name="managerLogin"/>
+			<interceptor-ref name="defaultStack"/>
+			<result name="login">/managerLogin.jsp</result>		
+			<result type="redirect">/page.action</result>
+			<result name="error">/error.jsp</result>
+		</action>
+	</package>
+</struts>
+
+
