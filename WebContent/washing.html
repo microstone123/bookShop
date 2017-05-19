@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="images/ai.png">
+
+<title>洗衣机知识问答</title>
+
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="css/signin.css" rel="stylesheet">
+
+<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+<script src="js/ie-emulation-modes-warning.js"></script>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+	<!--头部
+	<div class="login-top-box">
+ 	   <img src="images/login_img.png" class="logo">
+ 	   <h3>美的冰箱故障智能诊断平台</h3>
+	</div>-->
+
+
+	<div class="container">
+		<form class="form-signin">
+			<h2 class="form-signin-heading">请输入问题</h2>
+			<label for="inputProblem" class="sr-only">problem test</label> <input
+				id="problemTest" name="problemTest" type="text" class="form-control"
+				placeholder="问题" required autofocus />
+		</form>
+	</div>
+	<div class="container">
+		<textarea class="form-control" rows="5" id="outputA" placeholder="回答"></textarea>
+		<button class="btn btn-lg btn-primary btn-block" type="submit"
+			onclick="doKnowledge();">提问</button>
+	</div>
+	<script type="text/javascript">
+		//记住密码
+		function doKnowledge() {
+			var val = document.getElementById("problemTest").value; //获取  
+			alert("获取到的value：" + val);
+		}
+	</script>
+	<script src="js/ie10-viewport-bug-workaround.js"></script>
+
+</body>
+</html>
